@@ -2,8 +2,19 @@ body {
   background: #ACCEEC;
   color: #005CC5;
   text-align: center;
+  height: auto;
+  width: auto;
 }
-.counter-component {
+.counterComponent {
   display: flex;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  .counterComponentContainer {
+    display: flex;
+    height: 20%;
+    width: 75%;
+    justify-content: space-around;
+    align-items: center;
+  }
 }

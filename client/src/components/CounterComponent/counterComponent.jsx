@@ -17,18 +17,18 @@ export default class CounterComponent extends React.Component {
   decrement() {
     this.setState((prevState) => {
       const isZero = prevState.currentCount === 0;
-      const setCount = isZero ? 0 : prevState.currentCount;
-      return { currentCount: setCount };
+      const setCount = isZero ? 0 : prevState.currentCount - 1;
+      return ({ currentCount: setCount });
     });
   }
 
   render() {
-    return (
-      <div className="counter-component">
-        <button onClick={this.increment}>+</button>
-        <div>{this.state.currentCount}</div>
-        <button onClick={this.decrement}>-</button>
-      </div>
-    );
+    return <div className="counterComponent">
+        <div className="counterComponentContainer">
+          <button onClick={this.increment}>+</button>
+          <div>{this.state.currentCount}</div>
+          <button onClick={this.decrement}>-</button>
+        </div>
+      </div>;
   }
 }

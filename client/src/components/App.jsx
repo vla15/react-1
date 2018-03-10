@@ -1,10 +1,11 @@
 import React from 'react';
+import CounterComponent from './CounterComponent/counterComponent.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    return <h1>Hello Worl!edabc.  Touch the skytestsetse</h1>;
+    return <CounterComponent props={this.props}/>
   }
 }

@@ -18,11 +18,10 @@ module.exports = config = {
       {
         test: /\.(js|jsx)?$/,
         include: path.join(__dirname, 'client/src'),
-        exclude: [/node_modules/],
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            cacheDirectory: true,
             presets: ['env', 'react']
           }
         }

@@ -6,6 +6,6 @@ export default class App extends React.Component {
     super(props);
   }
   render() {
-    return <CounterComponent props={this.props}/>
+    return <CounterComponent props={this.props}/>;
   }
 }

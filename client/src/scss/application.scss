@@ -5,6 +5,7 @@ body {
   height: auto;
   width: auto;
 }
+
 .counterComponent {
   display: flex;
   justify-content: center;
@@ -18,4 +19,43 @@ body {
     justify-content: space-around;
     align-items: center;
   }
+}
+
+.header-container {
+  display: flex;
+  width: auto;
+  height: 15%;
+  align-items: flex-end;
+  flex-direction: column;
+  border: 1px black solid;
+
+  .header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8vh;
+    min-height: 80%;
+    width: 100%;
+  }
+
+  .header-items-container {
+    display: flex;
+    width: 100%;
+    min-height: 20%;
+    border: 1px black solid;
+    align-items: center;
+
+    .header-item {
+      min-width: 15%;
+    }
+  }
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  border: 1px solid black;
+  width: auto;
 }

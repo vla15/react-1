@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => (
   <div className="header-container">
     <div className="header-title">Unnamed Application</div>
     <div className="header-items-container">
-      <div className="header-item">Campaigns</div>
-      <div className="header-item">Past Campaigns</div>
+      <Link to="/" className="header-item">Home</Link>
+      <Link to="/counter" className="header-item">Campaigns</Link>
+      <Link to="/history" className="header-item">Past Campaigns</Link>
     </div>
   </div>
 );

@@ -2,7 +2,7 @@ const initialState = {
   bogus: 'hello'
 }
 
-const bogusReducer = (state = initialState, action) => {
+export const bogusReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'HELLO_WORLD':
       return {
@@ -13,5 +13,3 @@ const bogusReducer = (state = initialState, action) => {
       return state;
   }
 }
-
-export default bogusReducer

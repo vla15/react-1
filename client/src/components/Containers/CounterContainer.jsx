@@ -2,6 +2,7 @@ import React from 'react';
 import { counterActions } from '../../../actions/counterAction';
 import CounterComponent from '../CounterComponent/counterComponent.jsx';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
   return {

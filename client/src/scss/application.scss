@@ -1,9 +1,9 @@
 body {
   background: #ACCEEC;
-  color: #005CC5;
   text-align: center;
   height: auto;
   width: auto;
+  box-sizing: border-box;
 }
 
 .counterComponent {
@@ -27,26 +27,31 @@ body {
   height: 15%;
   align-items: flex-end;
   flex-direction: column;
+  justify-content: space-between;
   border: 1px black solid;
 
   .header-title {
+    flex-basis: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 8vh;
-    min-height: 80%;
     width: 100%;
   }
 
   .header-items-container {
     display: flex;
     width: 100%;
-    min-height: 20%;
-    border: 1px black solid;
+    border-top: 1px black solid;
     align-items: center;
 
     .header-item {
-      min-width: 15%;
+      flex: 1;
+      border-right: 1px black solid;
+
+    }
+    :last-child {
+      border-right: none;
     }
   }
 }

@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import appReducers from './reducers/index';
+import reducers from './reducers/index';
 import createHistory from "history/createBrowserHistory";
 import { routerReducer, routerMiddleware  } from 'react-router-redux';
 import { combineReducers } from 'redux'
@@ -9,7 +9,7 @@ const middleWare = routerMiddleware(history);
 
 export const store = createStore(
   combineReducers({
-    ...appReducers,
+    ...reducers,
     router: routerReducer
   }),
   applyMiddleware(middleWare)

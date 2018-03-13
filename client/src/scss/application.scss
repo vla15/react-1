@@ -27,12 +27,11 @@ body {
   height: 15%;
   align-items: flex-end;
   flex-direction: column;
-  justify-content: space-between;
   border: 1px black solid;
 
   .header-title {
-    flex-basis: 1;
     display: flex;
+    flex-grow: 1;
     justify-content: center;
     align-items: center;
     font-size: 8vh;

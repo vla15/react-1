@@ -68,3 +68,21 @@ a {
   border: 1px solid black;
   width: auto;
 }
+
+.body-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 75%;
+  width: 100%;
+
+  .past-campaigns-container {
+    border: 1px solid black;
+    width: 100%;
+  }
+
+  .current-campaigns-container {
+    border: 1px solid black;
+    width: 100%;
+  }
+}

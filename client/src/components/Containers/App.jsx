@@ -1,7 +1,7 @@
 import React from 'react';
-import CounterContainer from './CounterContainer.jsx';
-import Header from '../Header/header.jsx';
-import Footer from '../Footer/footer.jsx';
+import CounterContainer from './counterContainer.jsx';
+import Header from '../header/header.jsx';
+import Footer from '../footer/footer.jsx';
 import Body from '../body/body.jsx';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 

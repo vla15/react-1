@@ -77,11 +77,17 @@ a {
   width: 100%;
 
   .past-campaigns-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     border: 1px solid black;
     width: 100%;
   }
 
   .current-campaigns-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     border: 1px solid black;
     width: 100%;
   }

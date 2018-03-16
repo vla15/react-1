@@ -1,5 +1,5 @@
 import * as counterReducers from './counterReducer'
-import * as bogusReducers from './bogusReducer';
+import * as campaignReducers from './campaignReducer';
 
 const reducers = Object.assign({}, counterReducers, bogusReducers)
 

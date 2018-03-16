@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js build
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js jest
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -20,9 +20,9 @@ npm manifest:
     "description": "",
     "main": "index.js",
     "scripts": {
+      "test": "jest",
       "start": "nodemon server/index.js",
-      "build": "webpack -d --watch",
-      "test": "echo \"Error: no test specified\" && exit 1"
+      "build": "webpack -d --watch"
     },
     "author": "",
     "license": "ISC",
@@ -46,6 +46,7 @@ npm manifest:
       "eslint-plugin-jsx-a11y": "^6.0.3",
       "eslint-plugin-react": "^7.7.0",
       "express": "^4.16.2",
+      "history": "^4.7.2",
       "jest": "^22.4.2",
       "mongoose": "^5.0.9",
       "node-sass": "^4.7.2",
@@ -55,16 +56,18 @@ npm manifest:
       "react-dom": "^16.2.0",
       "react-redux": "^5.0.7",
       "react-router-dom": "^4.2.2",
+      "react-router-redux": "^5.0.0-alpha.9",
       "redux": "^3.7.2",
       "redux-logger": "^3.0.6",
       "redux-observable": "^0.18.0",
+      "rxjs": "^5.5.7",
       "sass-loader": "^6.0.7",
       "style-loader": "^0.20.3",
       "url-loader": "^1.0.1",
       "webpack": "^4.1.1"
     },
     "devDependencies": {
-      "babel-jest": "^22.4.1",
+      "babel-jest": "^23.0.0-alpha.0",
       "regenerator-runtime": "^0.11.1",
       "webpack-cli": "^2.0.10"
     }
@@ -720,6 +723,13 @@ Lockfile:
       babel-plugin-istanbul "^4.1.5"
       babel-preset-jest "^22.4.1"
   
+  babel-jest@^23.0.0-alpha.0:
+    version "23.0.0-alpha.0"
+    resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-23.0.0-alpha.0.tgz#a19c6bff78d7012a2e01e698ae56a8bd3e8cb2f6"
+    dependencies:
+      babel-plugin-istanbul "^4.1.5"
+      babel-preset-jest "^23.0.0-alpha.0"
+  
   babel-loader@^7.1.4:
     version "7.1.4"
     resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-7.1.4.tgz#e3463938bd4e6d55d1c174c5485d406a188ed015"
@@ -751,6 +761,10 @@ Lockfile:
   babel-plugin-jest-hoist@^22.4.1:
     version "22.4.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-22.4.1.tgz#d712fe5da8b6965f3191dacddbefdbdf4fb66d63"
+  
+  babel-plugin-jest-hoist@^23.0.0-alpha.0:
+    version "23.0.0-alpha.0"
+    resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-23.0.0-alpha.0.tgz#9d3e334679db15795de6b7df46b04bdb2d191869"
   
   babel-plugin-syntax-async-functions@^6.8.0:
     version "6.13.0"
@@ -1164,6 +1178,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-22.4.1.tgz#efa2e5f5334242a9457a068452d7d09735db172a"
     dependencies:
       babel-plugin-jest-hoist "^22.4.1"
+      babel-plugin-syntax-object-rest-spread "^6.13.0"
+  
+  babel-preset-jest@^23.0.0-alpha.0:
+    version "23.0.0-alpha.0"
+    resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-23.0.0-alpha.0.tgz#bb7c274b82ae75303ea368c34c97eb34490417d3"
+    dependencies:
+      babel-plugin-jest-hoist "^23.0.0-alpha.0"
       babel-plugin-syntax-object-rest-spread "^6.13.0"
   
   babel-preset-react@^6.24.1:
@@ -6672,6 +6693,14 @@ Lockfile:
       react-router "^4.2.0"
       warning "^3.0.0"
   
+  react-router-redux@^5.0.0-alpha.9:
+    version "5.0.0-alpha.9"
+    resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-5.0.0-alpha.9.tgz#825431516e0e6f1fd93b8807f6bd595e23ec3d10"
+    dependencies:
+      history "^4.7.2"
+      prop-types "^15.6.0"
+      react-router "^4.2.0"
+  
   react-router@^4.2.0:
     version "4.2.0"
     resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.2.0.tgz#61f7b3e3770daeb24062dae3eedef1b054155986"
@@ -7178,6 +7207,12 @@ Lockfile:
   rxjs@^5.4.2, rxjs@^5.5.2:
     version "5.5.6"
     resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.6.tgz#e31fb96d6fd2ff1fd84bcea8ae9c02d007179c02"
+    dependencies:
+      symbol-observable "1.0.1"
+  
+  rxjs@^5.5.7:
+    version "5.5.7"
+    resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.7.tgz#afb3d1642b069b2fbf203903d6501d1acb4cda27"
     dependencies:
       symbol-observable "1.0.1"
   
@@ -8673,9 +8708,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit signal: SIGSEGV
+  Exit code: 1
   Command: sh
-  Arguments: -c webpack -d --watch
+  Arguments: -c /Users/la/react-project/node_modules/.bin/jest
   Directory: /Users/la/react-project
   Output:
   

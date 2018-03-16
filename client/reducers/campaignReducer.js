@@ -1,27 +1,26 @@
 import { ADD_CAMPAIGN, REMOVE_CAMPAIGN } from '../actions/campaignAction';
+import * as _ from 'lodash';
 
-const initialState = {
+export const initialState = {
   campaigns: {}
 }
 
 export const campaignReducer = (state = initialState, action) => {
+  const currentState = state.campaigns;
   switch(action.type) {
     case ADD_CAMPAIGN:
       return {
-        ...initialState,
+        ...state,
         campaigns: {
-          ...campaigns,
+          ...currentState,
           [action.payload.id]: action.payload
         }
       };
     case REMOVE_CAMPAIGN:
-      let keyToRemove = action.payload.id
+      let removedCampaign = _.omit(currentState, action.payload.id);
       return {
-        ...initialState,
-        campaigns: {
-          ...campaigns,
-          keyToRemove
-        }
+        ...state,
+        campaigns: removedCampaign
       }
     default:
       return state;

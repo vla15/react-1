@@ -2,7 +2,9 @@ import React from 'react'
 
 const CurrentCampaign = () => (
   <div>
-    <li>items go here</li>
+    <div className="button-well">
+      <button className="add-campaign-button" block>+</button>
+    </div>
   </div>
 )
 

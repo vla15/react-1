@@ -10,11 +10,15 @@ class CurrentCampaign extends React.Component {
       imgUrl: 'this might work',
     }
     this.addCampaign = this.addCampaign.bind(this);
-    this.checkCampaigns = this.checkCampaigns.bind(this);
+    this.removeCampaign = this.removeCampaign.bind(this);
   }
 
   addCampaign() {
     this.props.addCampaign(this.testCampaign);
+  }
+
+  removeCampaign(campaign) {
+    this.props.removeCampaign(campaign);
   }
 
   render() {
@@ -22,7 +26,7 @@ class CurrentCampaign extends React.Component {
         <div className="current-campaign-list">
           {
           this.props.campaigns.map((campaign, key) =>
-          <CampaignItem key={key} campaign={campaign}/>)
+          <CampaignItem key={key} campaign={campaign} handleClick={() => this.removeCampaign(campaign)}/>)
           }
         </div>
         <div className="button-well">

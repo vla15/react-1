@@ -13,7 +13,6 @@ const convertCampaignsToList = campaigns => {
 
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     campaigns: convertCampaignsToList(state.campaignReducer.campaigns)
   };
@@ -22,7 +21,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     addCampaign: campaign => dispatch(campaignActions.addCampaign(campaign)),
-    removeCampaign: campaign => dispatch(campaignAction.removeCampaign(campaign))
+    removeCampaign: campaign => dispatch(campaignActions.removeCampaign(campaign))
   }
 }
 

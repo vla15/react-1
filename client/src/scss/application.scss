@@ -91,21 +91,26 @@ a {
     border: 1px solid black;
     width: 100%;
 
-    .button-well {
+    .current-campaign-body {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      min-width: 5vw;
-      min-height: 5vh;
-      border-radius: 20%;
-      border: 1px black solid;
-      background-color: white;
+      
+      .button-well {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 5vw;
+        min-height: 5vh;
+        border-radius: 20%;
+        border: 1px black solid;
+        background-color: white;
+      }
+  
+      .add-campaign-button {
+        font-size: 20px;
+        border-radius: 20%;
+        background-color: grey;
+      }
     }
 
-    .add-campaign-button {
-      font-size: 20px;
-      border-radius: 20%;
-      background-color: grey;
-    }
   }
 }

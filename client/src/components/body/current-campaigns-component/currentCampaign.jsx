@@ -17,12 +17,8 @@ class CurrentCampaign extends React.Component {
     this.props.addCampaign(this.testCampaign);
   }
 
-  checkCampaigns() {
-    console.log(this.props.campaigns);
-  }
-
   render() {
-    return <div>
+    return <div className="current-campaign-body">
         <div className="current-campaign-list">
           {
           this.props.campaigns.map((campaign, key) =>
@@ -34,7 +30,6 @@ class CurrentCampaign extends React.Component {
             +
           </button>
         </div>
-        <button onClick={this.checkCampaigns}>Check campaigns</button>
       </div>;
   }
 }

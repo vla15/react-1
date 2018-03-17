@@ -4,9 +4,18 @@ import currentCampaign from "../body/current-campaigns-component/currentCampaign
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
+const convertCampaignsToList = campaigns => {
+  let formattedCampaigns = campaigns ? Object.keys(campaigns) : [];
+  return formattedCampaigns = formattedCampaigns.map(campaignId => {
+    return campaigns[campaignId];
+  });
+}
+
+
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    campaigns: state.campaignReducer.campaigns
+    campaigns: convertCampaignsToList(state.campaignReducer.campaigns)
   };
 };
 

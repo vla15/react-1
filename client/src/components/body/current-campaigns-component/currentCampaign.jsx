@@ -1,4 +1,5 @@
 import React from 'react'
+import CampaignItem from '../campaign-item/campaign-item.jsx';
 
 class CurrentCampaign extends React.Component {
   constructor(props) {
@@ -6,11 +7,12 @@ class CurrentCampaign extends React.Component {
     this.testCampaign = {
       id: 1,
       data: 'hello world',
-      imgUrl: 'this might work'
+      imgUrl: 'this might work',
     }
     this.addCampaign = this.addCampaign.bind(this);
     this.checkCampaigns = this.checkCampaigns.bind(this);
   }
+
   addCampaign() {
     this.props.addCampaign(this.testCampaign);
   }
@@ -18,16 +20,22 @@ class CurrentCampaign extends React.Component {
   checkCampaigns() {
     console.log(this.props.campaigns);
   }
-  // ({addCampaign, removeCampaign, campaigns}) => (
+
   render() {
     return <div>
-      <div className="current-campaign-list">
-      {this.props.campaigns[1] ? this.props.campaigns[1].id : ''}</div>
-      <div className="button-well">
-        <button className="add-campaign-button" onClick={this.addCampaign}>+</button>
-      </div>
-      <button onClick={this.checkCampaigns}>Check campaigns</button>
-    </div>
+        <div className="current-campaign-list">
+          {
+          this.props.campaigns.map((campaign, key) =>
+          <CampaignItem key={key} campaign={campaign}/>)
+          }
+        </div>
+        <div className="button-well">
+          <button className="add-campaign-button" onClick={this.addCampaign}>
+            +
+          </button>
+        </div>
+        <button onClick={this.checkCampaigns}>Check campaigns</button>
+      </div>;
   }
 }
 

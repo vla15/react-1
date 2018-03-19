@@ -1,9 +1,8 @@
 body {
-  background: #ACCEEC;
-  text-align: center;
   height: auto;
   width: auto;
   box-sizing: border-box;
+  margin: 0px !important;
 }
 
 a {
@@ -45,17 +44,16 @@ a {
 
   .header-items-container {
     display: flex;
+    justify-content: flex-end;
     width: 100%;
-    border-top: 1px black solid;
     align-items: center;
+    background-color: black;
 
     .header-item {
-      flex: 1;
-      border-right: 1px black solid;
-
-    }
-    :last-child {
-      border-right: none;
+      color:white;
+      max-width: 10vw;
+      margin-left: 2vw;
+      margin-right: 2vw;
     }
   }
 }
@@ -93,7 +91,7 @@ a {
 
     .current-campaign-body {
       display: flex;
-      
+
       .button-well {
         display: flex;
         justify-content: center;
@@ -104,7 +102,7 @@ a {
         border: 1px black solid;
         background-color: white;
       }
-  
+
       .add-campaign-button {
         font-size: 20px;
         border-radius: 20%;

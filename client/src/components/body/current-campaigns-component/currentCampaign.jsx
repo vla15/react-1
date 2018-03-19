@@ -7,7 +7,7 @@ class CurrentCampaign extends React.Component {
     this.testCampaign = {
       id: 1,
       data: 'hello world',
-      imgUrl: 'this might work',
+      imgUrl: 'https://i.imgur.com/QyK5505.jpg',
     }
     this.addCampaign = this.addCampaign.bind(this);
     this.removeCampaign = this.removeCampaign.bind(this);

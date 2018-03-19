@@ -5,14 +5,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getFormattedCampaigns } from '../../../selectors/campaignSelector'
 
-// const convertCampaignsToList = campaigns => {
-//   let formattedCampaigns = campaigns ? Object.keys(campaigns) : [];
-//   return formattedCampaigns = formattedCampaigns.map(campaignId => {
-//     return campaigns[campaignId];
-//   });
-// }
-
-
 const mapStateToProps = state => {
   return {
     campaigns: getFormattedCampaigns(state)

@@ -29,10 +29,12 @@ class CurrentCampaign extends React.Component {
           <CampaignItem key={key} campaign={campaign} handleClick={() => this.removeCampaign(campaign)}/>)
           }
         </div>
-        <div className="button-well">
-          <button className="add-campaign-button" onClick={this.addCampaign}>
-            +
-          </button>
+        <div className="button-well-container">
+          <div className="button-well">
+            <button className="add-campaign-button" onClick={this.addCampaign}>
+              +
+            </button>
+          </div>
         </div>
       </div>;
   }

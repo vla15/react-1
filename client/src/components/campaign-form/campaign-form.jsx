@@ -9,12 +9,13 @@ class CampaignForm extends React.Component {
       imgUrl: ''
     }
     this.setFileName = this.setFileName.bind(this);
-    this.uploadFile = this.uploadFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  uploadFile(e) {
+  handleSubmit(e) {
     let file = this.fileInput.files[0];
     let fileName = this.state.fileName;
+    // this.uploadFile(file, fileName);
     this.setState({
       fileName: '',
     })
@@ -29,11 +30,25 @@ class CampaignForm extends React.Component {
     });
   }
 
+  uploadFile(file, fileName) {
+    let data = new FormData();
+    data.append('file', file);
+    data.append('filename', fileName)
+    fetch("http://localhost:3000/upload", {
+      method: 'POST',
+      body: data
+    })
+    .then(res => res.json())
+    .then(body => this.setState({
+      imgUrl: body
+    }))
+  }
+
   render() {
     return <div className="modal-container">
       <Modal show={this.props.active}>
         <img src={this.state.imgUrl} />
-        <form onSubmit={this.uploadFile}>
+        <form onSubmit={this.handleSubmit}>
           <div>
             <input type="file" ref={input => this.fileInput = input}/>
           </div>

@@ -15,6 +15,7 @@ class CampaignForm extends React.Component {
   handleSubmit(e) {
     let file = this.fileInput.files[0];
     let fileName = this.state.fileName;
+    // uncomment when endpoint is built out;
     // this.uploadFile(file, fileName);
     this.setState({
       fileName: '',

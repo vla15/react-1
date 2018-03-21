@@ -33,7 +33,7 @@ class CurrentCampaign extends React.Component {
     this.setState({
       modalActive: false,
     })
-    e.preventDefault();
+    e ? e.preventDefault() : null;
   }
 
   render() {

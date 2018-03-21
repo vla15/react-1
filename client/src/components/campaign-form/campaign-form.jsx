@@ -10,6 +10,7 @@ class CampaignForm extends React.Component {
     }
     this.setFileName = this.setFileName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.resetFormAndClose = this.resetFormAndClose.bind(this);
   }
 
   handleSubmit(e) {
@@ -17,18 +18,20 @@ class CampaignForm extends React.Component {
     let fileName = this.state.fileName;
     // uncomment when endpoint is built out;
     // this.uploadFile(file, fileName);
-    this.setState({
-      fileName: '',
-    })
-    this.fileInput.value = '';
     //before close triggers, should have spinner activate
-    this.props.onClose(e);
+    this.resetForm(e);
   }
 
   setFileName(e) {
     this.setState({
       fileName: e.target.value,
     });
+  }
+
+  resetFormAndClose(e) {
+    this.setState({ fileName: "" });
+    this.fileInput.value = "";
+    this.props.onClose(e);
   }
 
   uploadFile(file, fileName) {
@@ -47,7 +50,10 @@ class CampaignForm extends React.Component {
 
   render() {
     return <div className="modal-container">
-      <Modal show={this.props.active}>
+      <Modal show={this.props.active} onHide={this.resetFormAndClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Upload an image</Modal.Title>
+        </Modal.Header>
         <img src={this.state.imgUrl} />
         <form onSubmit={this.handleSubmit}>
           <div>

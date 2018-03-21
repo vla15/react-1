@@ -5,6 +5,13 @@ body {
   margin: 0px !important;
 }
 
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}
+
 a {
   text-decoration: none;
   color: black;

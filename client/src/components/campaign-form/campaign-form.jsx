@@ -1,4 +1,5 @@
 import React from 'react';
+import { Modal } from 'react-bootstrap';
 
 class CampaignForm extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class CampaignForm extends React.Component {
       fileName: '',
     })
     this.fileInput.value = '';
-    e.preventDefault();
+    this.props.onClose(e);
   }
 
   setFileName(e) {
@@ -28,19 +29,21 @@ class CampaignForm extends React.Component {
   }
 
   render() {
-    return <div>
-      <img src={this.state.imgUrl} />
-      <form onSubmit={this.uploadFile}>
-        <div>
-          <input type="file" ref={input => this.fileInput = input}/>
-        </div>
-        <div>
-          <input type="text" value={this.state.fileName} onChange={this.setFileName} placeholder="Please enter a description for the image"/>
-        </div>
-        <div>
-          <button>Upload</button>
-        </div>
-      </form>
+    return <div className="modal-container">
+      <Modal show={this.props.active}>
+        <img src={this.state.imgUrl} />
+        <form onSubmit={this.uploadFile}>
+          <div>
+            <input type="file" ref={input => this.fileInput = input}/>
+          </div>
+          <div>
+            <input type="text" value={this.state.fileName} onChange={this.setFileName} placeholder="Please enter a description for the image"/>
+          </div>
+          <div>
+            <button>Upload</button>
+          </div>
+        </form>
+      </Modal>
     </div>
   }
 }

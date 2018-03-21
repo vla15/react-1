@@ -19,6 +19,7 @@ class CampaignForm extends React.Component {
       fileName: '',
     })
     this.fileInput.value = '';
+    //before close triggers, should have spinner activate
     this.props.onClose(e);
   }
 

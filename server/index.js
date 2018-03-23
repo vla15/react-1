@@ -1,8 +1,11 @@
-const express = require('express');
-const db = require('../db/index');
+import express from 'express'
+import db from '../db/index'
+import bodyParser from 'body-parser'
+import restApiRouter from './api/router/restRouter'
+import multer from 'multer'
+
 const app = express();
-const bodyParser = require('body-parser');
-const restApiRouter = require('./api/router/restRouter')
+const upload = multer({dest: 'upload/'});
 app.listen(3000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

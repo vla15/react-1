@@ -1,8 +1,8 @@
-const express = require('express');
-const campaignsRouter = require('../campaigns/campaigns.restRouter');
+import express from 'express'
+import campaignsRouter from '../campaigns/campaigns.restRouter';
 
 const restRouter = express.Router();
 
 restRouter.use('/campaign', campaignsRouter)
 
-module.exports = restRouter
+export default restRouter

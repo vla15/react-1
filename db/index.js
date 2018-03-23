@@ -1,5 +1,7 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-module.exports = db = () => {
-  mongoose.connect('mongodb://localhost/react_project')
-};
+const db = () => {
+  mongoose.connect("mongodb://localhost/react_project");
+}
+
+export default db;

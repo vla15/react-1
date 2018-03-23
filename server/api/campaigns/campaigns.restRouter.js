@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express'
 
 const campaignsRouter = express.Router();
 
@@ -7,4 +7,4 @@ campaignsRouter.use('/add', (req, res) => {
   res.send('added you in the api/campaigns/add route')
 })
 
-module.exports = campaignsRouter
+export default campaignsRouter

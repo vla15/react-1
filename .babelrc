@@ -1,5 +1,8 @@
+// {
+//   "presets": ["react", ["env", {"modules": false}]],
+// }
 {
-  "presets": ["react", ["env", {"modules": false}]],
+  "presets": ["react","env"],
   "plugins": ["transform-object-rest-spread"],
   "env": {
     "test": {

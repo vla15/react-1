@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js install reselect
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js add babel-node
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -27,6 +27,7 @@ npm manifest:
     "author": "",
     "license": "ISC",
     "dependencies": {
+      "axios": "^0.18.0",
       "babel-cli": "^6.26.0",
       "babel-core": "^6.26.0",
       "babel-eslint": "^8.2.2",
@@ -35,6 +36,7 @@ npm manifest:
       "babel-preset-env": "^1.6.1",
       "babel-preset-es2015": "^6.24.1",
       "babel-preset-react": "^6.24.1",
+      "body-parser": "^1.18.2",
       "bootstrap-sass": "^3.3.7",
       "css-hot-loader": "^1.3.8",
       "css-loader": "^0.28.10",
@@ -50,6 +52,7 @@ npm manifest:
       "jest": "^22.4.2",
       "lodash": "^4.17.5",
       "mongoose": "^5.0.9",
+      "multer": "^1.3.0",
       "node-sass": "^4.7.2",
       "nodemon": "^1.17.1",
       "react": "^16.2.0",
@@ -61,6 +64,7 @@ npm manifest:
       "redux": "^3.7.2",
       "redux-logger": "^3.0.6",
       "redux-observable": "^0.18.0",
+      "reselect": "^3.0.1",
       "rxjs": "^5.5.7",
       "sass-loader": "^6.0.7",
       "style-loader": "^0.20.3",
@@ -302,6 +306,10 @@ Lockfile:
       micromatch "^3.1.4"
       normalize-path "^2.1.1"
   
+  append-field@^0.1.0:
+    version "0.1.0"
+    resolved "https://registry.yarnpkg.com/append-field/-/append-field-0.1.0.tgz#6ddc58fa083c7bc545d3c5995b2830cc2366d44a"
+  
   append-transform@^0.4.0:
     version "0.4.0"
     resolved "https://registry.yarnpkg.com/append-transform/-/append-transform-0.4.0.tgz#d76ebf8ca94d276e247a36bad44a4b74ab611991"
@@ -507,6 +515,13 @@ Lockfile:
   aws4@^1.2.1, aws4@^1.6.0:
     version "1.6.0"
     resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
+  
+  axios@^0.18.0:
+    version "0.18.0"
+    resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+    dependencies:
+      follow-redirects "^1.3.0"
+      is-buffer "^1.1.5"
   
   axobject-query@^0.1.0:
     version "0.1.0"
@@ -1346,7 +1361,7 @@ Lockfile:
     version "4.11.8"
     resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
   
-  body-parser@1.18.2:
+  body-parser@1.18.2, body-parser@^1.18.2:
     version "1.18.2"
     resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.2.tgz#87678a19d84b47d859b83199bd59bce222b10454"
     dependencies:
@@ -1540,6 +1555,13 @@ Lockfile:
   builtin-status-codes@^3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
+  
+  busboy@^0.2.11:
+    version "0.2.14"
+    resolved "https://registry.yarnpkg.com/busboy/-/busboy-0.2.14.tgz#6c2a622efcf47c57bbbe1e2a9c37ad36c7925453"
+    dependencies:
+      dicer "0.2.5"
+      readable-stream "1.1.x"
   
   bytes@3.0.0:
     version "3.0.0"
@@ -2440,6 +2462,13 @@ Lockfile:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-2.1.0.tgz#f41f1c10be4b00e87b5f13da680759f2c5bfd3e2"
   
+  dicer@0.2.5:
+    version "0.2.5"
+    resolved "https://registry.yarnpkg.com/dicer/-/dicer-0.2.5.tgz#5996c086bb33218c812c090bddc09cd12facb70f"
+    dependencies:
+      readable-stream "1.1.x"
+      streamsearch "0.1.2"
+  
   diff@^2.1.2:
     version "2.2.3"
     resolved "https://registry.yarnpkg.com/diff/-/diff-2.2.3.tgz#60eafd0d28ee906e4e8ff0a52c1229521033bf99"
@@ -3211,6 +3240,12 @@ Lockfile:
     dependencies:
       inherits "^2.0.1"
       readable-stream "^2.0.4"
+  
+  follow-redirects@^1.3.0:
+    version "1.4.1"
+    resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.4.1.tgz#d8120f4518190f55aac65bb6fc7b85fcd666d6aa"
+    dependencies:
+      debug "^3.1.0"
   
   for-in@^0.1.3:
     version "0.1.8"
@@ -5423,6 +5458,19 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   
+  multer@^1.3.0:
+    version "1.3.0"
+    resolved "https://registry.yarnpkg.com/multer/-/multer-1.3.0.tgz#092b2670f6846fa4914965efc8cf94c20fec6cd2"
+    dependencies:
+      append-field "^0.1.0"
+      busboy "^0.2.11"
+      concat-stream "^1.5.0"
+      mkdirp "^0.5.1"
+      object-assign "^3.0.0"
+      on-finished "^2.3.0"
+      type-is "^1.6.4"
+      xtend "^4.0.0"
+  
   multimatch@^2.0.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/multimatch/-/multimatch-2.1.0.tgz#9c7906a22fb4c02919e2f5f75161b4cdbd4b2a2b"
@@ -5717,6 +5765,10 @@ Lockfile:
     version "0.8.2"
     resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
   
+  object-assign@^3.0.0:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-3.0.0.tgz#9bedd5ca0897949bca47e7ff408062d549f587f2"
+  
   object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
@@ -5798,7 +5850,7 @@ Lockfile:
       function-bind "^1.1.0"
       has "^1.0.1"
   
-  on-finished@~2.3.0:
+  on-finished@^2.3.0, on-finished@~2.3.0:
     version "2.3.0"
     resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
     dependencies:
@@ -6783,6 +6835,15 @@ Lockfile:
       string_decoder "~1.0.3"
       util-deprecate "~1.0.1"
   
+  readable-stream@1.1.x:
+    version "1.1.14"
+    resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
+    dependencies:
+      core-util-is "~1.0.0"
+      inherits "~2.0.1"
+      isarray "0.0.1"
+      string_decoder "~0.10.x"
+  
   readdirp@^2.0.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-2.1.0.tgz#4ed0ad060df3073300c48440373f72d1cc642d78"
@@ -7081,6 +7142,10 @@ Lockfile:
     dependencies:
       resolve-from "^2.0.0"
       semver "^5.1.0"
+  
+  reselect@^3.0.1:
+    version "3.0.1"
+    resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
   
   resolve-cwd@^2.0.0:
     version "2.0.0"
@@ -7667,6 +7732,10 @@ Lockfile:
     dependencies:
       any-observable "^0.2.0"
   
+  streamsearch@0.1.2:
+    version "0.1.2"
+    resolved "https://registry.yarnpkg.com/streamsearch/-/streamsearch-0.1.2.tgz#808b9d0e56fc273d809ba57338e929919a1a9f1a"
+  
   strict-uri-encode@^1.0.0:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
@@ -7702,6 +7771,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.1.0.tgz#384f322ee8a848e500effde99901bba849c5d403"
     dependencies:
       safe-buffer "~5.1.0"
+  
+  string_decoder@~0.10.x:
+    version "0.10.31"
+    resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
   
   string_decoder@~1.0.3:
     version "1.0.3"
@@ -8009,7 +8082,7 @@ Lockfile:
     dependencies:
       prelude-ls "~1.1.2"
   
-  type-is@~1.6.15:
+  type-is@^1.6.4, type-is@~1.6.15:
     version "1.6.16"
     resolved "https://registry.yarnpkg.com/type-is/-/type-is-1.6.16.tgz#f89ce341541c672b25ee7ae3c73dee3b2be50194"
     dependencies:
@@ -8708,10 +8781,26 @@ Lockfile:
       yeoman-environment "^1.1.0"
 
 Trace: 
-  Error: `install` has been replaced with `add` to add new dependencies. Run "yarn add reselect" instead.
-      at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
-      at Object.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:21987:13)
-      at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:98:30)
-      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:109:13
-      at <anonymous>
+  Error: /Users/la/react-project/node_modules/babel-node: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c node message.js; sleep 10; exit 1;
+  Directory: /Users/la/react-project/node_modules/babel-node
+  Output:
+  ┌─────────────────────────────────────────────────────────────────────────────┐
+  |                         Hello there [34mundefined[39m 😛                           [0m│
+  |[39m          You tried to install babel-node. This is not babel-node 🚫          [0m│
+  |[39m               You should [34mnpm install -g babel-cli[39m instead 💁 .               [0m│
+  |[39m    I took this module to prevent somebody from pushing malicious code. 🕵    [0m│
+  |[39m                    Be careful out there, [34mundefined[39m! 👍                     [0m│
+  └─────────────────────────────────────────────────────────────────────────────┘
+      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Socket.stream.socket.on (internal/child_process.js:346:11)
+      at emitOne (events.js:116:13)
+      at Socket.emit (events.js:211:7)
+      at Pipe._handle.close [as _onclose] (net.js:554:12)

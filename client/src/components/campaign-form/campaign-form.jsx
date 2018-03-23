@@ -54,18 +54,22 @@ class CampaignForm extends React.Component {
         <Modal.Header closeButton>
           <Modal.Title>Upload an image</Modal.Title>
         </Modal.Header>
-        <img src={this.state.imgUrl} />
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <input type="file" ref={input => this.fileInput = input}/>
-          </div>
-          <div>
-            <input type="text" value={this.state.fileName} onChange={this.setFileName} placeholder="Please enter a description for the image"/>
-          </div>
-          <div>
-            <button>Upload</button>
-          </div>
-        </form>
+        <Modal.Body>
+          <h4>
+            <img src={this.state.imgUrl} />
+          </h4>
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <input type="file" ref={input => this.fileInput = input}/>
+            </div>
+            <div>
+              <input type="text" value={this.state.fileName} onChange={this.setFileName} placeholder="Please enter a description for the image"/>
+            </div>
+            <div>
+              <button>Upload</button>
+            </div>
+          </form>
+        </Modal.Body>
       </Modal>
     </div>
   }

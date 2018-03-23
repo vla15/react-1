@@ -3,13 +3,17 @@ import db from '../db/index'
 import bodyParser from 'body-parser'
 import restApiRouter from './api/router/restRouter'
 import multer from 'multer'
+import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
+import webpackConfig from '../webpack.config';
 
 const app = express();
 const upload = multer({dest: 'upload/'});
-app.listen(3000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(__dirname + '/../dist/'))
+app.use(webpackMiddleware(webpack(webpackConfig)));
+app.listen(3000);
+// app.use(express.static(__dirname + '/../dist/'))
 db()
 
 app.use('/api', restApiRouter);

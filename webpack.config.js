@@ -1,8 +1,11 @@
-const path = require('path');
+import path from 'path'
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import LiveReloadPlugin from "webpack-livereload-plugin";
+
 const env = process.env.NODE_ENV
 
-module.exports = config = {
-  entry: path.resolve(__dirname, './client/src') + '/app.js',
+module.exports = {
+  entry:  './client/src/app.js',
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "./dist")
@@ -38,5 +41,11 @@ module.exports = config = {
       }
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'client/src/index.html'
+    }),
+    new LiveReloadPlugin()
+  ],
   mode: env || 'development'
 };

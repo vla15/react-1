@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
+mongoose.Promise = global.Promise;
 
-const db = () => {
-  mongoose.connect("mongodb://localhost/react_project");
+const connect = () => {
+  return mongoose.connect("mongodb://localhost/react_project", {
+    useMongoClient: true
+  });
 }
 
-export default db;
+export default connect;

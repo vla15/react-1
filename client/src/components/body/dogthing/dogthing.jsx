@@ -21,17 +21,13 @@ class Dogs extends React.Component {
   async loadDogs() {
     try {
       let response = await fetch("http://localhost:3000/api/dogThing")
-      let json = await response.json();
-      console.log(json);
+      let data = await response.json();
+      this.setState({
+        dogs: data.dogs
+      })
     } catch (err) {
       console.error(err);
     }
-      // .then(res => res.json())
-      // .then(data => {
-      //   this.setState({
-      //     dogs: data.dogs
-      //   })
-      // })
   }
 
   handleAdoption(dog) {

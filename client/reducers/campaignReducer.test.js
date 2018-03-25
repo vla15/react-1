@@ -1,5 +1,5 @@
 import { initialState, campaignReducer } from './campaignReducer';
-import { ADD_CAMPAIGN, REMOVE_CAMPAIGN, campaignActions } from '../actions/campaignAction';
+import { ADD_CAMPAIGN, REMOVE_CAMPAIGN, LOAD_CAMPAIGN, campaignActions } from '../actions/campaignAction';
 
 let dummyCampaign;
 
@@ -38,4 +38,23 @@ test('it should return previous store state if target id doesnt exist in store',
   let result = campaignReducer(undefined, addAction);
   const unableToRemoveAction = campaignActions.removeCampaign({type: REMOVE_CAMPAIGN, payload: {_id: 4, name: 'test', data: '', imgUrl: ''}});
   expect(campaignReducer(result, unableToRemoveAction)).toEqual(result);
+})
+
+test('it should take a collectin of campaigns and load them into the campaign store', () => {
+  let campaignCollection = [];
+  let expectedState = {};
+  for (var i = 0; i < 3; i++) {
+    let campaign = {
+      name: 'ay',
+      _id: i,
+      data: 'what',
+      imgUrl: 'you know'
+    }
+    campaignCollection.push(campaign);
+    expectedState[i] = campaign;
+  }
+  expectedState = {campaigns: expectedState}
+  const loadAction = campaignActions.loadCampaign(campaignCollection);
+  expect(campaignReducer(undefined, loadAction)).toEqual(expectedState);
+
 })

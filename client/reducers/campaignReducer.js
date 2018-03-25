@@ -1,4 +1,4 @@
-import { ADD_CAMPAIGN, REMOVE_CAMPAIGN } from '../actions/campaignAction';
+import { ADD_CAMPAIGN, REMOVE_CAMPAIGN, LOAD_CAMPAIGN } from '../actions/campaignAction';
 import * as _ from 'lodash';
 
 export const initialState = {
@@ -8,6 +8,15 @@ export const initialState = {
 export const campaignReducer = (state = initialState, action) => {
   const currentState = state.campaigns;
   switch(action.type) {
+    case LOAD_CAMPAIGN:
+    let loadedCampaigns = Object.assign({}, currentState);
+    action.payload.forEach(campaign => {
+      loadedCampaigns[campaign._id] = campaign
+    })
+      return {
+        ...state,
+        campaigns: loadedCampaigns
+      }
     case ADD_CAMPAIGN:
       return {
         ...state,

@@ -19,27 +19,24 @@ class Dogs extends React.Component {
   }
 
   loadDogs() {
-    fetch("http://localhost:3000/getDogs")
+    fetch("http://localhost:3000/api/dogThing")
       .then(res => res.json())
-      .then(body => {
-        console.log('dog body', body)
+      .then(data => {
         this.setState({
-          dogs: body
+          dogs: data.dogs
         })
       })
   }
 
   handleAdoption(dog) {
-    fetch("http://localhost:3000/adoptDog", {
+    fetch("http://localhost:3000/api/dogThing", {
       method: "POST",
       body: JSON.stringify(dog),
       headers: { "Content-Type": "application/json" }
-    }).then(result => result.json())
-    .then(body => {
-      this.setState({
-        dogs: body
-      })
     })
+      .then(() => {
+        this.loadDogs();
+      })
   }
 
   renderDogs(searchTerm) {

@@ -42,13 +42,13 @@ class CampaignForm extends React.Component {
     this.props.onClose(e);
   }
 
-  uploadFile(campaign) {
-    fetch("http://localhost:3000/api/campaigns", {
+  async uploadFile(campaign) {
+    await fetch("http://localhost:3000/api/campaigns", {
       method: 'POST',
       body: JSON.stringify(campaign),
       headers: {"Content-Type": "application/json"}
     })
-    .then(() => this.props.addCampaign(campaign));
+    this.props.addCampaign(campaign);
   }
 
   render() {

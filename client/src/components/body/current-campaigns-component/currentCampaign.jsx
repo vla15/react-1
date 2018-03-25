@@ -12,14 +12,17 @@ class CurrentCampaign extends React.Component {
     this.removeCampaign = this.removeCampaign.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.renderCampaigns = this.renderCampaigns.bind(this);
+    this.loadCampaigns = this.loadCampaigns.bind(this);
   }
 
   componentWillMount() {
-    fetch("http://localhost:3000/api/campaigns")
-      .then(res => res.json())
-      .then(data => {
-        this.props.loadCampaign(data.campaigns);
-      });
+    this.loadCampaigns()
+  }
+
+  async loadCampaigns() {
+    let data = await fetch("http://localhost:3000/api/campaigns")
+    data = await data.json();
+    this.props.loadCampaign(data.campaigns);
   }
 
   addCampaign(campaign) {

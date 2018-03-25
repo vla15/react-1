@@ -30,15 +30,13 @@ class Dogs extends React.Component {
     }
   }
 
-  handleAdoption(dog) {
-    fetch("http://localhost:3000/api/dogThing", {
+  async handleAdoption(dog) {
+    await fetch("http://localhost:3000/api/dogThing", {
       method: "POST",
       body: JSON.stringify(dog),
       headers: { "Content-Type": "application/json" }
     })
-      .then(() => {
-        this.loadDogs();
-      })
+    this.loadDogs();
   }
 
   renderDogs(searchTerm) {

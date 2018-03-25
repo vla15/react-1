@@ -14,6 +14,12 @@ class CurrentCampaign extends React.Component {
     this.renderCampaigns = this.renderCampaigns.bind(this);
   }
 
+  componentWillMount() {
+    fetch("http://localhost:3000/api/campaigns")
+      .then(res => res.json())
+      .then(campaigns => campaigns.forEach(campaign => this.addCampaign(campaign)));
+  }
+
   addCampaign(campaign) {
     this.props.addCampaign(campaign);
   }

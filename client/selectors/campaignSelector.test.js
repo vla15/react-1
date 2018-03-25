@@ -8,12 +8,14 @@ let testCampaignReducer;
 beforeEach(() => {
     campaigns = {
     1: {
-      id: 1,
+      _id: 1,
+      name: 'test',
       data: 'set',
       imgUrl: 'biggest'
     },
     2: {
-      id: 2,
+      _id: 2,
+      name: 'hey',
       data: 'test',
       imgUrl: 'big test'
     }

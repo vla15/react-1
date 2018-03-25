@@ -5,7 +5,8 @@ let dummyCampaign;
 
 beforeEach(() => {
   dummyCampaign = {
-    id: 1,
+    _id: 1,
+    name: 'hey there',
     data: 'glob',
     imgUrl: 'www.testurl.com'
   }
@@ -35,6 +36,6 @@ test('it should remove a campaign from the store, when REMOVE_CAMPAIGN is dispat
 test('it should return previous store state if target id doesnt exist in store', () => {
   const addAction = campaignActions.addCampaign(dummyCampaign);
   let result = campaignReducer(undefined, addAction);
-  const unableToRemoveAction = campaignActions.removeCampaign({type: REMOVE_CAMPAIGN, payload: {id: 4, data: '', imgUrl: ''}});
+  const unableToRemoveAction = campaignActions.removeCampaign({type: REMOVE_CAMPAIGN, payload: {_id: 4, name: 'test', data: '', imgUrl: ''}});
   expect(campaignReducer(result, unableToRemoveAction)).toEqual(result);
 })

@@ -13,11 +13,11 @@ export const campaignReducer = (state = initialState, action) => {
         ...state,
         campaigns: {
           ...currentState,
-          [action.payload.id]: action.payload
+          [action.payload._id]: action.payload
         }
       };
     case REMOVE_CAMPAIGN:
-      let removedCampaign = _.omit(currentState, action.payload.id);
+      let removedCampaign = _.omit(currentState, action.payload._id);
       return {
         ...state,
         campaigns: removedCampaign

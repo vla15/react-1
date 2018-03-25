@@ -7,14 +7,15 @@ import { getFormattedCampaigns } from '../../../selectors/campaignSelector'
 
 const mapStateToProps = state => {
   return {
-    campaigns: getFormattedCampaigns(state)
+    campaigns: getFormattedCampaigns(state),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     addCampaign: campaign => dispatch(campaignActions.addCampaign(campaign)),
-    removeCampaign: campaign => dispatch(campaignActions.removeCampaign(campaign))
+    removeCampaign: campaign => dispatch(campaignActions.removeCampaign(campaign)),
+    loadCampaign: campaigns => dispatch(campaignActions.loadCampaign(campaigns)),
   }
 }
 

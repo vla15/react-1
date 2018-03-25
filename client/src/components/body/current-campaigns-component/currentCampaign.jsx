@@ -18,7 +18,7 @@ class CurrentCampaign extends React.Component {
     fetch("http://localhost:3000/api/campaigns")
       .then(res => res.json())
       .then(data => {
-        data.campaigns.forEach(campaign => this.addCampaign(campaign))
+        this.props.loadCampaign(data.campaigns);
       });
   }
 

@@ -11,6 +11,7 @@ class CurrentCampaign extends React.Component {
     this.addCampaign = this.addCampaign.bind(this);
     this.removeCampaign = this.removeCampaign.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.renderCampaigns = this.renderCampaigns.bind(this);
   }
 
   addCampaign(campaign) {
@@ -29,14 +30,17 @@ class CurrentCampaign extends React.Component {
     })
   }
 
+  renderCampaigns() {
+    return this.props.campaigns.map((campaign, key) => (
+      <CampaignItem key={key} campaign={campaign} />
+    ));
+  }
+
   render() {
     return <div className="current-campaign-body">
         <CampaignForm addCampaign={this.addCampaign} active={this.state.modalActive} onClose={this.toggleModal}/>
         <div className="current-campaign-list">
-          {
-          this.props.campaigns.map((campaign, key) =>
-          <CampaignItem key={key} campaign={campaign} handleClick={() => this.removeCampaign(campaign)}/>)
-          }
+          {this.renderCampaigns()}
         </div>
         <div className="button-well-container">
           <div className="button-well">

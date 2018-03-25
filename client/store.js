@@ -3,6 +3,7 @@ import reducers from './reducers/index';
 import createHistory from "history/createBrowserHistory";
 import { routerReducer, routerMiddleware  } from 'react-router-redux';
 import { combineReducers } from 'redux'
+import logger from 'redux-logger';
 
 export const history = createHistory();
 const middleWare = routerMiddleware(history);
@@ -12,5 +13,5 @@ export const store = createStore(
     ...reducers,
     router: routerReducer
   }),
-  applyMiddleware(middleWare)
+  applyMiddleware(middleWare, logger)
 )

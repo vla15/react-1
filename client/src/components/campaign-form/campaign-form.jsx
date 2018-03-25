@@ -1,6 +1,8 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 
+let id = 0;
+
 class CampaignForm extends React.Component {
   constructor(props) {
     super(props);
@@ -15,12 +17,14 @@ class CampaignForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // let file = this.fileInput.files[0];
-    // let fileName = this.state.fileName;
-    let newCampaign = { name: this.state.fileName, data: "blah", imgUrl: "https://i.imgur.com/QyK5505.jpg" };
-    // uncomment when endpoint is built out;
+    let newCampaign = {
+      id: id,
+      name: this.state.fileName,
+      data: "blah",
+      imgUrl: "https://i.imgur.com/QyK5505.jpg"
+    };
+    id++;
     this.uploadFile(newCampaign);
-    //before close triggers, should have spinner activate
     this.resetFormAndClose();
   }
 
@@ -31,15 +35,14 @@ class CampaignForm extends React.Component {
   }
 
   resetFormAndClose(e) {
-    this.setState({ fileName: "" });
+    this.setState({
+      fileName: ""
+    });
     this.fileInput.value = "";
     this.props.onClose(e);
   }
 
   uploadFile(campaign) {
-    // let data = new FormData();
-    // data.append('file', file);
-    // data.append('filename', fileName)
     fetch("http://localhost:3000/api/campaigns/add", {
       method: 'POST',
       body: JSON.stringify(campaign),

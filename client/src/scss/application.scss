@@ -74,6 +74,7 @@ a {
   width: auto;
 }
 
+
 .body-container {
   display: flex;
   align-items: flex-start;
@@ -95,6 +96,10 @@ a {
     align-items: flex-start;
     border: 1px solid black;
     width: 100%;
+
+    .current-campaign-list {
+      display: flex;
+    }
 
     .current-campaign-body {
       display: flex;

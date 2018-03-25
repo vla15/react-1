@@ -43,7 +43,7 @@ class CampaignForm extends React.Component {
   }
 
   uploadFile(campaign) {
-    fetch("http://localhost:3000/api/campaigns/add", {
+    fetch("http://localhost:3000/api/campaigns", {
       method: 'POST',
       body: JSON.stringify(campaign),
       headers: {"Content-Type": "application/json"}

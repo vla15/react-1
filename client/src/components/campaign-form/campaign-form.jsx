@@ -14,12 +14,14 @@ class CampaignForm extends React.Component {
   }
 
   handleSubmit(e) {
-    let file = this.fileInput.files[0];
-    let fileName = this.state.fileName;
+    e.preventDefault();
+    // let file = this.fileInput.files[0];
+    // let fileName = this.state.fileName;
+    let newCampaign = { name: this.state.fileName, data: "blah", imgUrl: "https://i.imgur.com/QyK5505.jpg" };
     // uncomment when endpoint is built out;
-    // this.uploadFile(file, fileName);
+    this.uploadFile(newCampaign);
     //before close triggers, should have spinner activate
-    this.resetForm(e);
+    this.resetFormAndClose();
   }
 
   setFileName(e) {
@@ -34,18 +36,16 @@ class CampaignForm extends React.Component {
     this.props.onClose(e);
   }
 
-  uploadFile(file, fileName) {
-    let data = new FormData();
-    data.append('file', file);
-    data.append('filename', fileName)
-    fetch("http://localhost:3000/upload", {
+  uploadFile(campaign) {
+    // let data = new FormData();
+    // data.append('file', file);
+    // data.append('filename', fileName)
+    fetch("http://localhost:3000/api/campaigns/add", {
       method: 'POST',
-      body: data
+      body: JSON.stringify(campaign),
+      headers: {"Content-Type": "application/json"}
     })
-    .then(res => res.json())
-    .then(body => this.setState({
-      imgUrl: body
-    }))
+    .then(() => this.props.addCampaign(campaign));
   }
 
   render() {

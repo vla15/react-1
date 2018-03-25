@@ -8,37 +8,30 @@ class CurrentCampaign extends React.Component {
     this.state = {
       modalActive: false,
     }
-    this.testCampaign = {
-      id: 1,
-      data: 'hello world',
-      imgUrl: 'https://i.imgur.com/QyK5505.jpg',
-    }
     this.addCampaign = this.addCampaign.bind(this);
     this.removeCampaign = this.removeCampaign.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
-  addCampaign() {
-    this.props.addCampaign(this.testCampaign);
-    this.setState({
-      modalActive: true,
-    })
+  addCampaign(campaign) {
+    this.props.addCampaign(campaign);
   }
 
   removeCampaign(campaign) {
     this.props.removeCampaign(campaign);
   }
 
-  closeModal(e) {
-    this.setState({
-      modalActive: false,
+  toggleModal() {
+    this.setState((prevState) => {
+      return {
+        modalActive: !prevState.modalActive
+      }
     })
-    e ? e.preventDefault() : null;
   }
 
   render() {
     return <div className="current-campaign-body">
-        <CampaignForm active={this.state.modalActive} onClose={this.closeModal}/>
+        <CampaignForm addCampaign={this.addCampaign} active={this.state.modalActive} onClose={this.toggleModal}/>
         <div className="current-campaign-list">
           {
           this.props.campaigns.map((campaign, key) =>
@@ -47,7 +40,7 @@ class CurrentCampaign extends React.Component {
         </div>
         <div className="button-well-container">
           <div className="button-well">
-            <button className="add-campaign-button" onClick={this.addCampaign}>
+            <button className="add-campaign-button" onClick={this.toggleModal}>
               +
             </button>
           </div>

@@ -9,7 +9,7 @@ campaignsRouter.use('/add', (req, res) => {
     if (err) {
       return console.error(err);
     }
-    res.sendStatus(200);
+    res.sendStatus(200)
   })
 })
 

@@ -7,7 +7,7 @@ const CampaignItem = ({ campaign, handleClick }) => (
   <div className="campaign-item-container" style={style}>
     <img onClick={handleClick} src={campaign.imgUrl} />
     <div className="campaign-item-description">
-      <div className="campaign-item-title">{campaign.id}</div>
+      <div className="campaign-item-title">{campaign.name}</div>
       <LikeButton />
     </div>
   </div>

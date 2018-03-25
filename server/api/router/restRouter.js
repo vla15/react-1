@@ -3,6 +3,6 @@ import campaignsRouter from '../campaigns/campaigns.restRouter';
 
 const restRouter = express.Router();
 
-restRouter.use('/campaign', campaignsRouter)
+restRouter.use('/campaigns', campaignsRouter)
 
 export default restRouter

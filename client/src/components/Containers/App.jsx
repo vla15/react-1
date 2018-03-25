@@ -3,7 +3,7 @@ import Header from '../header/header.jsx';
 import Footer from '../footer/footer.jsx';
 import Body from '../body/body.jsx';
 import CampaignForm from '../campaign-form/campaign-form.jsx';
-import Dogs from '../body/dogthing/dogthing';
+import Dogs from '../body/dogthing/dogthing.jsx';
 import { Route } from 'react-router-dom';
 
 const App = () => (

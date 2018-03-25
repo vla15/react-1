@@ -5,7 +5,9 @@ import LiveReloadPlugin from "webpack-livereload-plugin";
 const env = process.env.NODE_ENV
 
 module.exports = {
-  entry: "./client/src/app.js",
+  entry: {
+    app: ["regenerator-runtime/runtime", "./client/src/app.js"]
+  },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "./dist")

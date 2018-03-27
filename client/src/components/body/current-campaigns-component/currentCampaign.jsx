@@ -49,15 +49,17 @@ class CurrentCampaign extends React.Component {
 
   render() {
     return <div className="current-campaign-body">
-        <CampaignForm addCampaign={this.addCampaign} active={this.state.modalActive} onClose={this.toggleModal}/>
+        <CampaignForm addCampaign={this.addCampaign} active={this.state.modalActive} onClose={this.toggleModal} />
         <div className="current-campaign-list">
           {this.renderCampaigns()}
-        </div>
-        <div className="button-well-container">
-          <div className="button-well">
-            <button className="add-campaign-button" onClick={this.toggleModal}>
-              +
-            </button>
+          <div className="empty-campaign-item">
+            <div className="button-well-container">
+              <div className="button-well">
+                <button className="add-campaign-button" onClick={this.toggleModal}>
+                  +
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>;

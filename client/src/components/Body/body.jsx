@@ -1,18 +1,39 @@
 import React from 'react';
 import CurrentCampaignContainer from '../containers/currentCampaignContainer.jsx';
 import PastCampaign from './past-campaigns-component/pastCampaign.jsx'
+import { Route, Link } from 'react-router-dom'
 
-const Body = () => (
-  <div className="body-container">
-    <div className="current-campaigns-container">
-      <div className="title">Current Campaigns</div>
-      <CurrentCampaignContainer />
+class Body extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      category: 'current'
+    }
+    this.renderCampaignBody = this.renderCampaignBody.bind(this);
+    this.toggleCategoryChange = this.toggleCategoryChange.bind(this);
+  }
+
+  toggleCategoryChange(category) {
+    this.setState({
+      category: category
+    })
+  }
+
+  renderCampaignBody() {
+    return this.state.category === 'current' ? <CurrentCampaignContainer/> : <PastCampaign/>
+  }
+
+  render() {
+    return <div className="body-container">
+      <div className="campaigns-container-title">
+        <div className="title" onClick={() => this.toggleCategoryChange('current')}>Current Campaigns</div>
+        <div className="title" onClick={() => this.toggleCategoryChange('past')}>Past Campaigns</div>
+      </div>
+      <div className="campaigns-container-body">
+        {this.renderCampaignBody()}
+      </div>
     </div>
-    <div className="past-campaigns-container">
-      <div className="title">Past Campaigns</div>
-      <PastCampaign />
-    </div>
-  </div>
-);
+  }
+}
 
 export default Body;

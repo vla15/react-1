@@ -29,9 +29,7 @@ class Body extends React.Component {
         <div className="title" onClick={() => this.toggleCategoryChange('current')}>Current Campaigns</div>
         <div className="title" onClick={() => this.toggleCategoryChange('past')}>Past Campaigns</div>
       </div>
-      <div className="campaigns-container-body">
-        {this.renderCampaignBody()}
-      </div>
+      {this.renderCampaignBody()}
     </div>
   }
 }

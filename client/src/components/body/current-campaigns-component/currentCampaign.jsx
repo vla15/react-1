@@ -16,6 +16,7 @@ class CurrentCampaign extends React.Component {
   }
 
   componentWillMount() {
+    //need to load current campaings based on user
     this.loadCampaigns()
   }
 
@@ -52,12 +53,14 @@ class CurrentCampaign extends React.Component {
         <CampaignForm addCampaign={this.addCampaign} active={this.state.modalActive} onClose={this.toggleModal} />
         <div className="current-campaign-list">
           {this.renderCampaigns()}
-          <div className="empty-campaign-item">
-            <div className="button-well-container">
-              <div className="button-well">
-                <button className="add-campaign-button" onClick={this.toggleModal}>
-                  +
-                </button>
+          <div className="campaign-item-box">
+            <div className="empty-campaign-item">
+              <div className="button-well-container">
+                <div className="button-well">
+                  <button className="add-campaign-button" onClick={this.toggleModal}>
+                    +
+                  </button>
+                </div>
               </div>
             </div>
           </div>

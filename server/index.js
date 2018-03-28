@@ -1,5 +1,5 @@
 import express from 'express'
-import connect from '../db/index'
+import dbConnect from '../db/index'
 import bodyParser from 'body-parser'
 import restApiRouter from './api/router/restRouter'
 import multer from 'multer'
@@ -16,4 +16,4 @@ app.use('/api', restApiRouter);
 app.use(history());
 app.use(webpackMiddleware(webpack(webpackConfig)));
 app.listen(3000);
-connect();
+dbConnect();

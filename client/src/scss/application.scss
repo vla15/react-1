@@ -134,12 +134,27 @@ a {
       .campaign-item-container {
         display: flex;
         flex: 1;
+        flex-direction: column;
+        cursor: pointer;
 
         > img {
+          position: relative;
+          top: 0;
+          left: 0;
           flex: 1;
-          overflow: hidden;
           width: 100%;
           height: auto;
+        }
+
+        .campaign-item-caption {
+          top: -50;
+          display: inline;
+          position: relative;
+          color: #fff;
+          padding: 1rem;
+          background-color: grey;
+          -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
         }
       }
     }

@@ -6,30 +6,16 @@ import { Route, Link } from 'react-router-dom'
 class Body extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      category: 'current'
-    }
-    this.renderCampaignBody = this.renderCampaignBody.bind(this);
-    this.toggleCategoryChange = this.toggleCategoryChange.bind(this);
-  }
-
-  toggleCategoryChange(category) {
-    this.setState({
-      category: category
-    })
-  }
-
-  renderCampaignBody() {
-    return this.state.category === 'current' ? <CurrentCampaignContainer/> : <PastCampaign/>
   }
 
   render() {
     return <div className="body-container">
       <div className="campaigns-container-title">
-        <div className="title" onClick={() => this.toggleCategoryChange('current')}>Current Campaigns</div>
-        <div className="title" onClick={() => this.toggleCategoryChange('past')}>Past Campaigns</div>
+        <Link className="title" to={`${this.props.match.url}/current`}>Current Campaigns</Link>
+        <Link className="title" to={`${this.props.match.url}/past`}>PastCampaigns</Link>
       </div>
-      {this.renderCampaignBody()}
+      <Route path={`${this.props.match.path}/current`} component={CurrentCampaignContainer}/>
+      <Route path={`${this.props.match.path}/past`} component={PastCampaign}/>
     </div>
   }
 }

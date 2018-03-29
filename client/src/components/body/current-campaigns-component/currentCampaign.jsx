@@ -1,6 +1,7 @@
 import React from 'react'
 import CampaignItem from '../campaign-item/campaign-item.jsx';
 import CampaignForm from '../../campaign-form/campaign-form.jsx';
+import { Route, Link } from 'react-router-dom';
 
 class CurrentCampaign extends React.Component {
   constructor(props) {
@@ -43,9 +44,11 @@ class CurrentCampaign extends React.Component {
   }
 
   renderCampaigns() {
-    return this.props.campaigns.map((campaign, key) => (
-      <CampaignItem key={key} campaign={campaign} />
-    ));
+    return this.props.campaigns.map((campaign, key) => {
+      return <CampaignItem key={key} campaign={campaign}>
+        <Link className="caption-link" to={`${this.props.match.url}/${key}`}/>
+      </CampaignItem>
+    })
   }
 
   render() {

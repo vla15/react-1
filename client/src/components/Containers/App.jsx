@@ -9,7 +9,6 @@ import { CurrentCampaignsContainer } from './currentCampaignContainer.jsx';
 
 const App = () => (
     <div className="app-body">
-        <Header />
         <div className="site-content">
             <Route exact path="/" component={Dogs}/>
             <Route path="/campaigns" component={Body}/>

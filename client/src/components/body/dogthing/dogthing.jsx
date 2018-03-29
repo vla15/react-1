@@ -1,4 +1,5 @@
 import React from "react";
+import Header from '../../header/header.jsx';
 
 class Dogs extends React.Component {
   constructor(props) {
@@ -64,9 +65,10 @@ class Dogs extends React.Component {
 
   render() {
     return <div>
-      <input type="text" onChange={this.handleChange} value={this.state.term}/>
-      {this.renderDogs(this.state.term)}
-    </div>
+        <Header />
+        <input type="text" onChange={this.handleChange} value={this.state.term} />
+        {this.renderDogs(this.state.term)}
+      </div>;
   }
 }
 

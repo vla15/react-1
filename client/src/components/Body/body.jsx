@@ -1,6 +1,7 @@
 import React from 'react';
 import CurrentCampaignContainer from '../containers/currentCampaignContainer.jsx';
 import PastCampaign from './past-campaigns-component/pastCampaign.jsx'
+import CampaignItemDetail from './campaign-item-detail/campaign-item-detail.jsx'
 import { Route, Link } from 'react-router-dom'
 
 class Body extends React.Component {
@@ -8,13 +9,16 @@ class Body extends React.Component {
     super(props)
   }
 
+  //implement custom header for body;
+
   render() {
     return <div className="body-container">
       <div className="campaigns-container-title">
         <Link className="title" to={`${this.props.match.url}/current`}>Current Campaigns</Link>
         <Link className="title" to={`${this.props.match.url}/past`}>PastCampaigns</Link>
       </div>
-      <Route path={`${this.props.match.path}/current`} component={CurrentCampaignContainer}/>
+      <Route exact path={`${this.props.match.path}/current`} component={CurrentCampaignContainer}/>
+      <Route path ={`${this.props.match.path}/current/:id`} component={CampaignItemDetail}/>
       <Route path={`${this.props.match.path}/past`} component={PastCampaign}/>
     </div>
   }

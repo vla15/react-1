@@ -8,4 +8,7 @@ campaignsRouter.route('/')
   .get(campaignsController.getAllCampaigns)
   .post(campaignsController.addCampaign)
 
+campaignsRouter.route('/:id')
+  .delete(campaignsController.removeCampaign)
+
 export default campaignsRouter

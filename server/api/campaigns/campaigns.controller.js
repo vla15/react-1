@@ -17,14 +17,11 @@ export const addCampaign = (req, res, next) => {
     res.sendStatus(200)
     next();
   })
-  .catch(err => console.error(err)(err, success))
+  .catch(err => console.error(err))
 };
 
 export const removeCampaign = (req, res, next) => {
-  let target = campaignsModel.find({id: req.body.id}, (err, campaign) => {
-    if (err) {
-      return console.error(err);
-    }
-    campaign.remove();
-  })
+  campaignsModel.findByIdAndRemove(req.params.id)
+  .then(() => res.sendStatus(201))
+  .catch(err => console.error(err));
 }

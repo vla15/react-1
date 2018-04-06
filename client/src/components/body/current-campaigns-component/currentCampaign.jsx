@@ -46,7 +46,7 @@ class CurrentCampaign extends React.Component {
   renderCampaigns() {
     return this.props.campaigns.map((campaign, key) => {
       return <CampaignItem key={key} campaign={campaign}>
-        <Link className="caption-link" to={`${this.props.match.url}/${key}`}/>
+        <Link className="caption-link" to={`${this.props.match.url}/${campaign._id}`}/>
       </CampaignItem>
     })
   }

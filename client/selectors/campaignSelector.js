@@ -8,6 +8,16 @@ const formatCampaigns = campaigns => {
   }));
 }
 
+const testingCampaigns = campaigns => {
+  console.log('testing', campaigns);
+  return campaigns
+}
+
+export const getNonFormattedCampaigns = createSelector(
+  getCampaigns,
+  testingCampaigns
+)
+
 export const getFormattedCampaigns = createSelector(
   getCampaigns,
   formatCampaigns

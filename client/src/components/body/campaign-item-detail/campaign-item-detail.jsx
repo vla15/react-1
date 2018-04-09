@@ -3,6 +3,10 @@ import React from 'react';
 class CampaignItemDetail extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      content: '',
+      campaign: ''
+    }
     this.onDelete = this.onDelete.bind(this);
   }
 
@@ -12,7 +16,6 @@ class CampaignItemDetail extends React.Component {
     await fetch(`http://localhost:3000/api/campaigns/${id}`, {
       method: 'DELETE'
     })
-    console.log(this.props.history);
     this.props.history.push('/campaigns/current')
     //need to inform backend to delete item
     //then store needs to update with latest information
@@ -21,11 +24,25 @@ class CampaignItemDetail extends React.Component {
     //need to trigger a refresh on the currentcampaigns page
   }
 
+  componentDidMount() {
+    let id = this.props.match.params.id
+    fetch(`http://localhost:3000/api/campaigns/${id}`)
+      .then(data => data.json())
+      .then(d => {
+        if (this.refs.campaignItemDetail) {
+            this.setState({
+          campaign: d.campaign,
+            })
+        }
+      })
+  }
+
   render() {
-    return <div>
-      <div>Hi there</div>
-      <button onClick={this.onDelete}>DELETE</button>
-    </div>
+    return <div ref="campaignItemDetail">
+        <img src={this.state.campaign.imgUrl}/>
+        <div>{this.state.campaign.name}</div>
+        <button onClick={this.onDelete}>DELETE</button>
+    </div>;
   }
 }
 

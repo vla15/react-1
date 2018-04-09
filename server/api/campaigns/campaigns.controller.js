@@ -6,6 +6,12 @@ export const getAllCampaigns = (req, res, next) => {
   .catch(err => console.error(err));
 };
 
+export const getCampaign = (req, res, next) => {
+  campaignsModel.findOne({_id: req.params.id})
+  .then(campaign => res.json({campaign}))
+  .catch(err => console.error(err));
+}
+
 export const addCampaign = (req, res, next) => {
   let campaign = new campaignsModel({
     name: req.body.name,

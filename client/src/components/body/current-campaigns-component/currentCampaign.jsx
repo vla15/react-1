@@ -28,6 +28,7 @@ class CurrentCampaign extends React.Component {
   }
 
   addCampaign(campaign) {
+    //needs to add to db first
     this.props.addCampaign(campaign);
   }
 

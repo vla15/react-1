@@ -1,8 +1,6 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 
-let id = 0;
-
 class CampaignForm extends React.Component {
   constructor(props) {
     super(props);
@@ -13,17 +11,29 @@ class CampaignForm extends React.Component {
     this.setFileName = this.setFileName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.resetFormAndClose = this.resetFormAndClose.bind(this);
+    this.handleImage = this.handleImage.bind(this);
+  }
+
+  handleImage(e) {
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    console.log(file);
+    let result = reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.setState({
+        imgUrl: reader.result
+      })
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
     let newCampaign = {
-      id: id,
       name: this.state.fileName,
       data: "blah",
       imgUrl: "https://i.imgur.com/QyK5505.jpg"
     };
-    id++;
     this.uploadFile(newCampaign);
     this.resetFormAndClose();
   }
@@ -52,6 +62,7 @@ class CampaignForm extends React.Component {
   }
 
   render() {
+    let imgPreview = this.state.imgUrl ? <img src={this.state.imgUrl}/> : null;
     return <div className="modal-container">
       <Modal show={this.props.active} onHide={this.resetFormAndClose}>
         <Modal.Header closeButton>
@@ -59,11 +70,11 @@ class CampaignForm extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <h4>
-            <img src={this.state.imgUrl} />
+            {imgPreview}
           </h4>
           <form onSubmit={this.handleSubmit}>
             <div>
-              <input type="file" ref={input => this.fileInput = input}/>
+              <input type="file" onChange={this.handleImage} ref={input => this.fileInput = input}/>
             </div>
             <div>
               <input type="text" value={this.state.fileName} onChange={this.setFileName} placeholder="Please enter a description for the image"/>

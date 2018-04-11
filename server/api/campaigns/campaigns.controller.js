@@ -1,4 +1,5 @@
 import campaignsModel from './campaigns.model';
+import fs from 'fs';
 
 export const getAllCampaigns = (req, res, next) => {
   campaignsModel.find({})
@@ -16,15 +17,24 @@ export const addCampaign = (req, res, next) => {
   let campaign = new campaignsModel({
     name: req.body.name,
     data: req.body.data,
-    imgUrl: req.body.imgUrl
   });
   campaign.save()
   .then(success => {
-    res.sendStatus(200)
+    res.json({_id: success._id})
     next();
   })
   .catch(err => console.error(err))
 };
+
+export const uploadImage = (req, res, next) => {
+  let buffer = fs.readFileSync(req.file.path)
+  campaignsModel.findOne({_id: req.params.id})
+  .then(campaign => {
+    Object.assign(campaign, {img: {data: buffer, contentType: req.file.mimeType}})
+    return campaign.save();
+  })
+  .then(success => res.sendStatus(201))
+}
 
 export const removeCampaign = (req, res, next) => {
   campaignsModel.findByIdAndRemove(req.params.id)

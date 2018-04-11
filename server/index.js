@@ -12,7 +12,7 @@ const app = express();
 const upload = multer({dest: 'upload/'});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/api', restApiRouter);
+app.use('/api', upload.single('image'), restApiRouter);
 app.use(history());
 app.use(webpackMiddleware(webpack(webpackConfig)));
 app.listen(3000);

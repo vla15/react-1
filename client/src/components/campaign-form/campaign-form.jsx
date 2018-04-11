@@ -6,7 +6,9 @@ class CampaignForm extends React.Component {
     super(props);
     this.state = {
       fileName: '',
-      imgUrl: ''
+      file: '',
+      imgUrl: '',
+      target: '',
     }
     this.setFileName = this.setFileName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,11 +20,14 @@ class CampaignForm extends React.Component {
     e.preventDefault();
     let reader = new FileReader();
     let file = e.target.files[0];
-    console.log(file);
-    let result = reader.readAsDataURL(file);
-    reader.onloadend = () => {
+    let data = new FormData();
+    data.append('image', file)
+    reader.readAsDataURL(file);
+    reader.onloadend = (e) => {
       this.setState({
-        imgUrl: reader.result
+        file: file,
+        imgUrl: reader.result,
+        target: data
       })
     }
   }
@@ -31,8 +36,7 @@ class CampaignForm extends React.Component {
     e.preventDefault();
     let newCampaign = {
       name: this.state.fileName,
-      data: "blah",
-      imgUrl: "https://i.imgur.com/QyK5505.jpg"
+      data: "null",
     };
     this.uploadFile(newCampaign);
     this.resetFormAndClose();
@@ -53,10 +57,17 @@ class CampaignForm extends React.Component {
   }
 
   async uploadFile(campaign) {
-    await fetch("http://localhost:3000/api/campaigns", {
+    let id;
+    let data = await fetch("http://localhost:3000/api/campaigns", {
       method: 'POST',
       body: JSON.stringify(campaign),
       headers: {"Content-Type": "application/json"}
+    })
+    data = await data.json();
+    id = data._id;
+    await fetch(`http://localhost:3000/api/campaigns/${id}`, {
+      method: 'PUT',
+      body: this.state.target
     })
     this.props.addCampaign(campaign);
   }

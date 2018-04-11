@@ -9,6 +9,7 @@ campaignsRouter.route('/')
   .post(campaignsController.addCampaign)
 
 campaignsRouter.route('/:id')
+  .put(campaignsController.uploadImage)
   .get(campaignsController.getCampaign)
   .delete(campaignsController.removeCampaign)
 

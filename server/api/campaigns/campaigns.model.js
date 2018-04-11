@@ -3,7 +3,10 @@ import mongoose from 'mongoose';
 const campaignsSchema = mongoose.Schema({
   name: String,
   data: String,
-  imgUrl: String,
+  img: {
+    data: Buffer,
+    contentType: String
+  },
   votes: {
     type: Number,
     min: 0,

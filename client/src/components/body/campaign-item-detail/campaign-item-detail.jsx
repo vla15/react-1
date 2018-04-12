@@ -31,15 +31,16 @@ class CampaignItemDetail extends React.Component {
       .then(d => {
         if (this.refs.campaignItemDetail) {
             this.setState({
-          campaign: d.campaign,
+          campaign: d.campaign
             })
         }
       })
   }
 
   render() {
+    let imgUrl = this.state.campaign.img ? `data:image/png;base64,${this.state.campaign.img}` : null;
     return <div ref="campaignItemDetail">
-        <img src={this.state.campaign.imgUrl}/>
+        <img src={imgUrl}/>
         <div>{this.state.campaign.name}</div>
         <button onClick={this.onDelete}>DELETE</button>
     </div>;

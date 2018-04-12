@@ -9,7 +9,6 @@ const formatCampaigns = campaigns => {
 }
 
 const testingCampaigns = campaigns => {
-  console.log('testing', campaigns);
   return campaigns
 }
 

@@ -8,7 +8,7 @@ class CampaignForm extends React.Component {
       fileName: '',
       file: '',
       imgUrl: '',
-      target: '',
+      formData: '',
     }
     this.setFileName = this.setFileName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,7 +27,7 @@ class CampaignForm extends React.Component {
       this.setState({
         file: file,
         imgUrl: reader.result,
-        target: data
+        formData: data
       })
     }
   }
@@ -50,7 +50,8 @@ class CampaignForm extends React.Component {
 
   resetFormAndClose(e) {
     this.setState({
-      fileName: ""
+      fileName: "",
+      imgUrl: '',
     });
     this.fileInput.value = "";
     this.props.onClose(e);
@@ -64,11 +65,14 @@ class CampaignForm extends React.Component {
       headers: {"Content-Type": "application/json"}
     })
     data = await data.json();
-    id = data._id;
-    await fetch(`http://localhost:3000/api/campaigns/${id}`, {
+    id = data._id
+    let imgData = await fetch(`http://localhost:3000/api/campaigns/${id}`, {
       method: 'PUT',
-      body: this.state.target
+      body: this.state.formData
     })
+    imgData = await imgData.json()
+    campaign.img = imgData.imgData;
+    campaign._id = id;
     this.props.addCampaign(campaign);
   }
 

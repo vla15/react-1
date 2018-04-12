@@ -32,13 +32,13 @@ class CampaignForm extends React.Component {
     }
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
     let newCampaign = {
       name: this.state.fileName,
       data: "null",
     };
-    this.uploadFile(newCampaign);
+    await this.uploadFile(newCampaign);
     this.resetFormAndClose();
   }
 
@@ -52,6 +52,8 @@ class CampaignForm extends React.Component {
     this.setState({
       fileName: "",
       imgUrl: '',
+      formData: '',
+      file: ''
     });
     this.fileInput.value = "";
     this.props.onClose(e);

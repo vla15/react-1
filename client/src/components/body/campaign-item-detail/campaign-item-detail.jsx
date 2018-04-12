@@ -16,9 +16,7 @@ class CampaignItemDetail extends React.Component {
   async onDelete(e) {
     e.preventDefault();
     let id = this.props.match.params.id;
-    await fetch(`http://localhost:3000/api/campaigns/${id}`, {
-      method: 'DELETE'
-    })
+    await fetch(`http://localhost:3000/api/campaigns/${id}`, {method: 'DELETE'})
     await this.props.removeCampaign(this.state.campaign);
     this.props.history.push('/campaigns/current')
   }

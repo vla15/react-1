@@ -4,8 +4,8 @@ const campaignsSchema = mongoose.Schema({
   name: String,
   data: String,
   img: {
-    data: Buffer,
-    contentType: String
+    data: String,
+    path: String
   },
   votes: {
     type: Number,

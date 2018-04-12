@@ -1,27 +1,16 @@
 import campaignsModel from './campaigns.model';
 import fs from 'fs';
+import path from 'path';
 
 export const getAllCampaigns = (req, res, next) => {
   campaignsModel.find({})
-  .then(campaigns => {
-    let clones = campaigns.map((c) => {
-      let clone = Object.assign({}, c);
-      clone.img = new Buffer(c.img.data).toString("base64");
-      return clone;
-    })
-    res.json({campaigns: clones})
-  })
+  .then(campaigns => res.json({campaigns}))
   .catch(err => console.error(err));
 };
 
 export const getCampaign = (req, res, next) => {
   campaignsModel.findOne({_id: req.params.id})
-  .then(campaign => {
-    let base64 = new Buffer(campaign.img.data).toString('base64')
-    let clone = Object.assign({}, campaign);
-    clone.img = base64;
-    res.json({campaign: clone, img: base64})
-  })
+  .then(campaign => res.json({campaign}))
   .catch(err => console.error(err));
 }
 
@@ -39,20 +28,24 @@ export const addCampaign = (req, res, next) => {
 };
 
 export const uploadImage = (req, res, next) => {
+  let _id = req.params.id
   let buffer = fs.readFileSync(req.file.path)
-  campaignsModel.findOne({_id: req.params.id})
-  .then(campaign => {
-    Object.assign(campaign, {img: {data: buffer, contentType: 'image/png'}})
-    return campaign.save();
-  })
-  .then(c => {
-    let base64 = new Buffer(c.img.data).toString('base64')
-    res.json({imgData: base64});
-  })
+  let base64 = new Buffer(buffer).toString("base64");
+  let img = {data: base64, path: req.file.path}
+  campaignsModel.findOneAndUpdate({_id}, {img})
+  .then(model => model.save())
+  .then(success => campaignsModel.findOne({_id}))
+  .then(campaign => res.json({campaign}))
+  .catch(err => console.error(err));
 }
 
 export const removeCampaign = (req, res, next) => {
   campaignsModel.findByIdAndRemove(req.params.id)
-  .then(() => res.sendStatus(201))
+  .then((c) => {
+    let route = path.resolve(c.img.path);
+    console.log(route, typeof route);
+    fs.unlinkSync(route);
+    res.sendStatus(201);
+  })
   .catch(err => console.error(err));
 }

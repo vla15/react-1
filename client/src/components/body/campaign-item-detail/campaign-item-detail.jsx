@@ -29,16 +29,15 @@ class CampaignItemDetail extends React.Component {
     fetch(`http://localhost:3000/api/campaigns/${id}`)
       .then(data => data.json())
       .then(d => {
+        let {campaign} = d
         if (this.refs.campaignItemDetail) {
-            this.setState({
-          campaign: d.campaign
-            })
+            this.setState({campaign})
         }
       })
   }
 
   render() {
-    let imgUrl = this.state.campaign.img ? `data:image/png;base64,${this.state.campaign.img}` : null;
+    let imgUrl = this.state.campaign.img ? `data:image/png;base64,${this.state.campaign.img.data}` : null;
     return <div ref="campaignItemDetail">
         <img src={imgUrl}/>
         <div>{this.state.campaign.name}</div>

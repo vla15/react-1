@@ -57,11 +57,11 @@ class CampaignForm extends React.Component {
     this.props.onClose(e);
   }
 
-  async uploadFile(campaign) {
+  async uploadFile(d) {
     let id;
     let data = await fetch("http://localhost:3000/api/campaigns", {
       method: 'POST',
-      body: JSON.stringify(campaign),
+      body: JSON.stringify(d),
       headers: {"Content-Type": "application/json"}
     })
     data = await data.json();
@@ -70,9 +70,8 @@ class CampaignForm extends React.Component {
       method: 'PUT',
       body: this.state.formData
     })
-    imgData = await imgData.json()
-    campaign.img = imgData.imgData;
-    campaign._id = id;
+    imgData = await imgData.json();
+    let {campaign} = imgData;
     this.props.addCampaign(campaign);
   }
 

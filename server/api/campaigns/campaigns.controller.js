@@ -43,7 +43,6 @@ export const removeCampaign = (req, res, next) => {
   campaignsModel.findByIdAndRemove(req.params.id)
   .then((c) => {
     let route = path.resolve(c.img.path);
-    console.log(route, typeof route);
     fs.unlinkSync(route);
     res.sendStatus(201);
   })

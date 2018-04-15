@@ -8,11 +8,13 @@ import webpackMiddleware from 'webpack-dev-middleware';
 import webpackConfig from '../webpack.config';
 import history from 'connect-history-api-fallback';
 import config from '../config/index.js';
+import { signin } from './api/auth/auth.js'
 
 const app = express();
 const upload = multer({dest: 'upload/'});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use('/signin', signin)
 app.use('/api', upload.single('image'), restApiRouter);
 app.use(history());
 app.use(webpackMiddleware(webpack(webpackConfig)));

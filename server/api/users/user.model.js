@@ -28,7 +28,7 @@ userSchema.methods = {
 
   //salts the password with bcrypt before hashing
   const salt = bcrypt.genSaltSync(10)
-  return bcrypt.hashSync(plaintTextPassword, salt)
+  this.passwordHash = bcrypt.hashSync(plaintTextPassword, salt);
   }
 }
 

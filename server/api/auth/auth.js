@@ -1,7 +1,7 @@
 import UserModel from '../users/user.model';
 import expressJwt from 'express-jwt';
 import jwt from 'jsonwebtoken';
-import config from '../../config/index.js'
+import config from '../../../config/index.js';
 
 const checkToken = expressJwt({ secret: 'powerup' });
 
@@ -17,15 +17,15 @@ export const signToken = id =>
   jwt.sign({ id }, "powerup", { expiresIn: "30d" });
 
 export const verifyUser = () => (req, res, next) => {
-  const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
 
-  if (!username || !password) {
+  if (!email || !password) {
     res.status(400).send('You need to provide a username and password!')
     return;
   }
 
-  UserModel.findOne({username: username})
+  UserModel.findOne({email})
   .then(user => {
     if (!user) {
       res.status(400).send('Your username doesn\'t match any record')

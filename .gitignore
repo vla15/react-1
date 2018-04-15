@@ -1,5 +1,5 @@
 node_modules/
 dist/
-server/config/dev.js
-server/config/prod.js
-server/config/test.js
+config/dev.js
+config/prod.js
+config/test.js

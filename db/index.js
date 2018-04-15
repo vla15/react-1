@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
+import config from '../config/index.js';
 mongoose.Promise = global.Promise;
 
 const connect = () => {
-  return mongoose.connect("mongodb://localhost/react_project");
+  return mongoose.connect(config.db.url);
 }
 
 export default connect;

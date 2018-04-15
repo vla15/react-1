@@ -1,6 +1,7 @@
 import UserModel from '../users/user.model';
 import expressJwt from 'express-jwt';
 import jwt from 'jsonwebtoken';
+import config from '../../config/index.js'
 
 const checkToken = expressJwt({ secret: 'powerup' });
 
@@ -15,7 +16,7 @@ export const signin = (req, res, next) => {
 export const signToken = id =>
   jwt.sign({ id }, "powerup", { expiresIn: "30d" });
 
-const verifyUser = () => (req, res, next) => {
+export const verifyUser = () => (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 

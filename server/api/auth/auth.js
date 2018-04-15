@@ -4,6 +4,17 @@ import jwt from 'jsonwebtoken';
 
 const checkToken = expressJwt({ secret: 'powerup' });
 
+export const signin = (req, res, next) => {
+  // req.user will be tihere from the middleware
+  // verify user. Then we can just create a token
+  // and send it back for the client to consume
+  const token = signToken(req.user.id);
+  res.json({ token: token });
+};
+
+export const signToken = id =>
+  jwt.sign({ id }, "powerup", { expiresIn: "30d" });
+
 const verifyUser = () => (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -58,8 +69,4 @@ export const getUser = () => (req, res, next) => {
     .catch(err => console.error(err));
 }
 
-export const signToken = (id) => jwt.sign(
-  {id},
-  'powerup',
-  {expiresIn: '30d'}
-)
+export const protect = [decodeToken(), getUser()]

@@ -11,13 +11,13 @@ export const signup = (req, res, next) => {
       }
     })
     .then(() => {
-        let createdUser = new UserModel({
+      let createdUser = new UserModel({
         first: body.first,
         last: body.last,
         email: body.email,
         passwordHash: body.password
       })
-      let hash = createdUser.hashPassword(body.password);
+      createdUser.hashPassword(body.password);
       createdUser.save()
     })
     .then(success => res.status(201).send('User created'))

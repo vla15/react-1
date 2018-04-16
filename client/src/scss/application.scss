@@ -49,13 +49,20 @@ a {
   }
 }
 
-.header-container {
+.login-page-container {
   display: flex;
-  width: auto;
-  height: 100vh;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  border: 1px black solid;
+}
+
+.header-container {
+  // display: flex;
+  // width: auto;
+  // height: 100vh;
+  // align-items: flex-end;
+  // flex-direction: column;
+  // border: 1px black solid;
 
   .header-title {
     display: flex;

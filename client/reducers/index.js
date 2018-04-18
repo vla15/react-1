@@ -1,5 +1,6 @@
-import * as campaignReducers from './campaignReducer';
+import * as campaignReducer from './campaignReducer';
+import * as userReducer from './userReducer';
 
-const reducers = Object.assign({}, campaignReducers)
+const reducers = Object.assign({}, campaignReducer)
 
 export default reducers

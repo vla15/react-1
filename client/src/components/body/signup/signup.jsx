@@ -15,7 +15,7 @@ class SignupComponent extends React.Component {
     this.isPasswordEqual = this.isPasswordEqual.bind(this);
   }
 
-  handleChange(e, type, val) {
+  handleChange(e, type) {
     this.setState({
       [type]: e.target.value
     })
@@ -45,6 +45,7 @@ class SignupComponent extends React.Component {
         headers: { "Content-Type": "application/json" }
       })
       .then(success => {
+        //router goes back to home
         console.log('created a user');
       })
       .catch(err => console.log('errored', err));

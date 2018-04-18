@@ -8,7 +8,7 @@ beforeEach(() => {
     _id: 1,
     name: 'hey there',
     data: 'glob',
-    imgUrl: 'www.testurl.com'
+    img: 'www.testurl.com'
   }
 })
 
@@ -36,7 +36,7 @@ test('it should remove a campaign from the store, when REMOVE_CAMPAIGN is dispat
 test('it should return previous store state if target id doesnt exist in store', () => {
   const addAction = campaignActions.addCampaign(dummyCampaign);
   let result = campaignReducer(undefined, addAction);
-  const unableToRemoveAction = campaignActions.removeCampaign({type: REMOVE_CAMPAIGN, payload: {_id: 4, name: 'test', data: '', imgUrl: ''}});
+  const unableToRemoveAction = campaignActions.removeCampaign({type: REMOVE_CAMPAIGN, payload: {_id: 4, name: 'test', data: '', img: ''}});
   expect(campaignReducer(result, unableToRemoveAction)).toEqual(result);
 })
 
@@ -48,7 +48,7 @@ test('it should take a collectin of campaigns and load them into the campaign st
       name: 'ay',
       _id: i,
       data: 'what',
-      imgUrl: 'you know'
+      img: 'you know'
     }
     campaignCollection.push(campaign);
     expectedState[i] = campaign;

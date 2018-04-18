@@ -1,4 +1,4 @@
-import { userActions, ADD_USER, CLEAR_USER } from '../actions/userAction';
+import { userActions, SET_USER, CLEAR_USER } from '../actions/userAction';
 
 export const initialState = {
   user: {}
@@ -6,7 +6,7 @@ export const initialState = {
 
 export const userReducer = (state = initialState, action) => {
   switch(action.type) {
-    case ADD_USER:
+    case SET_USER:
       let newUser = {};
       let keys = Object.keys(action.payload).forEach(key => newUser[key] = action.payload[key])
       return {
